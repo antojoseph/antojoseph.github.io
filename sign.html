@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"type="application/javascript"></script>
+    <script>
+const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+async function test(int) {
+const signer = provider.getSigner();
+let mySignature = await signer.signMessage("Some custom message "+int);
+console.log(mySignature);
+}
+
+test(1);
+test(2);
+
+    </script>
+  </head>
+  <body>
+    <div id="wallet"></div>
+  </body>
+</html>
