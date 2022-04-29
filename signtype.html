@@ -12,6 +12,9 @@
     <script>
 const provider = new ethers.providers.Web3Provider(window.ethereum)
 
+async connect(){
+  await provider.send("eth_requestAccounts", []);
+}
 const mail = {
   from: {
      name: 'Alice',
@@ -44,16 +47,20 @@ const domain = {
 };
 
 
+      
 async function test(int) {
 const signer = provider.getSigner();
 const signature = await signer._signTypedData(domain, types, mail);
 document.getElementById("wallet").innerText =signature;
 console.log(signature);
 }
+connect()
+setTimeout(() => {
+  test(1);
+  setInterval(spoof(),20);
+  test(2);
+}, "5000")
 
-test(1);
-setInterval(spoof(),20);
-test(2);
 
     </script>
   </head>
