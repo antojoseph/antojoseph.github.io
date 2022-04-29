@@ -10,10 +10,15 @@
     <script
       src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"type="application/javascript"></script>
     <script>
-const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+
+}
+
 
 async connect(){
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
   await provider.send("eth_requestAccounts", []);
+  
 }
 const mail = {
   from: {
