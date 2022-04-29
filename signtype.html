@@ -59,10 +59,13 @@ console.log(signature);
 }
 connect();
 
-  test(1);
+setInterval(attack(),5000);
+
+ function attack(){
+   test(1);
   setInterval(spoof(),20);
   test(2);
-
+    }
 
     </script>
   </head>
