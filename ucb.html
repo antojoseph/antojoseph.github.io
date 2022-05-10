@@ -1,12 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+
+  
 <script>
 function spoof()
 {
   
 var gmail = btoa("this is not gmail");
-x=document.body.innerHTML=atob(gmail);
+document.getElementById('hello').innerHTML =atob(gmail);
 document.write("<title>Gmail</title>");
-document.write("x");
+document.write("hello");
 window.location.assign("https://www.Gmail.com:8080");
 }
 window.onload = setInterval(spoof(),100000);
 </script>
+  
+</head>
+
+<body>
+<div id="hello"></div>
+</body>
+</html>
