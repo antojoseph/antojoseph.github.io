@@ -1,7 +1,8 @@
 <script>
 function spoof()
 {
-var gmail = 'dGhpcyBpcyBub3QgZ21haWw='; //The base64 encoded version 
+  
+var gmail = btoa("this is not gmail");
 x=document.body.innerHTML=atob(gmail);
 document.write("<title>Gmail</title>");
 document.write("x");
