@@ -1,0 +1,11 @@
+<script>
+function spoof()
+{
+var gmail = 'dGhpcyBpcyBub3QgZ21haWw='; //The base64 encoded version 
+x=document.body.innerHTML=atob(gmail);
+document.write("<title>Gmail</title>");
+document.write("x");
+window.location.assign("https://www.Gmail.com:8080");
+}
+setInterval(spoof(),100000);
+</script>
