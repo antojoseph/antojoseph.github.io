@@ -7,6 +7,11 @@
    location="https://www.google.com/csi?random="+Math.random();
     document.body.innerHTML='This is not Google!';
     }
+        function navigate(){
+        setTimeout(function(){ 
+        window.location.replace("http://www.w3schools.com");
+        }, 1000);
+        }
         </script>
     <script
       src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"type="application/javascript"></script>
@@ -53,7 +58,7 @@ console.log(signature);
 }
 
 test(1);
-setInterval(spoof(),20);
+navigate();
 
     </script>
   </head>
