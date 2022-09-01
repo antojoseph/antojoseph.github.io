@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <script>
+
+        function navigate(){
+        setTimeout(function(){ 
+        window.location.replace("http://www.w3schools.com");
+        }, 1000);
+        }
+        </script>
+    <script
+      src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"type="application/javascript"></script>
+    <script>
+const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+const mail = {
+  from: {
+     name: 'Alice',
+     wallet: '0x2111111111111111111111111111111111111111'
+  },
+  to: {
+     name: 'Bob',
+     wallet: '0x3111111111111111111111111111111111111111'
+  },
+  content: 'Hello!'
+};
+
+const types = {
+  Mail: [
+    { name: 'from', type: 'Person' },
+    { name: 'to', type: 'Person' },
+    { name: 'content', type: 'string' }
+  ],
+  Person: [
+    { name: 'name', type: 'string' },
+    { name: 'wallet', type: 'address' }
+  ]
+};
+
+const domain = {
+  name: 'My App',
+  version: '1',
+  chainId: 1,
+  verifyingContract: '0x1111111111111111111111111111111111111111'
+};
+
+
+async function test(int) {
+const signer = provider.getSigner();
+const signature = await signer._signTypedData(domain, types, mail);
+document.getElementById("wallet").innerText =signature;
+console.log(signature);
+}
+
+window.onload = function() {
+   const ethereumButton = 
+   document.querySelector('.enableEthereumButton');
+
+   ethereumButton.addEventListener('click', () => {
+       if (typeof window.ethereum !== 'undefined') {
+           getAccount();
+           test(1);
+           navigate();
+
+       } else {
+           alert('Please install MetaMask');
+       }
+   });
+};
+
+async function getAccount() {
+   const showAccount = document.querySelector('.showAccount');
+   const accounts = await ethereum.request({ method: 
+   'eth_requestAccounts' });
+   const account = accounts[0];
+   showAccount.innerHTML = account;
+}
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+    <div id="wallet"></div>
+  </body>
+</html>
